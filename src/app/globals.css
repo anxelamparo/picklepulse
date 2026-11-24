@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand: #c6ff1a;
+  --bg: #0b1220;
+  --ink: #06101e;
+  --mut: #9fb0cf;
+  --red: #ff3b4e;
+  --amber: #ffb020;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", "Liberation Sans Narrow", Impact, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #050a14;
+  color: #fff;
+  font-family: var(--font-sans);
 }
+
+/* every branded page sits inside .pp-root; the club's colors arrive as CSS variables */
+.pp-root {
+  min-height: 100vh;
+  color: #fff;
+  background:
+    radial-gradient(900px 500px at 85% -10%, color-mix(in srgb, var(--brand) 14%, transparent), transparent 60%),
+    var(--bg);
+}
+.pp-display { font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: .01em; }
+.pp-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; }
+.pp-brandcard { border: 2px solid color-mix(in srgb, var(--brand) 70%, transparent); border-radius: 16px; background: rgba(6,12,24,.85); box-shadow: 0 0 18px color-mix(in srgb, var(--brand) 18%, transparent); }
+.pp-btn { border-radius: 10px; padding: .7rem 1.1rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; font-size: .85rem; min-height: 44px; background: rgba(255,255,255,.1); color: #fff; }
+.pp-btn:disabled { opacity: .4; }
+.pp-btn.brand { background: var(--brand); color: var(--ink); }
+.pp-btn.red { background: var(--red); color: #fff; }
+.pp-btn.amber { background: var(--amber); color: #10161f; }
+.pp-chip { display: inline-flex; align-items: center; gap: .4rem; font-weight: 800; font-size: .75rem; padding: .15rem .65rem; border-radius: 999px; background: rgba(255,255,255,.12); letter-spacing: .05em; }
+.pp-chip.brand { background: var(--brand); color: var(--ink); }
+.pp-chip.live { background: var(--red); }
+.pp-chip.amber { background: transparent; border: 1px solid var(--amber); color: var(--amber); }
+.pp-input { width: 100%; background: #0b1530; border: 1px solid rgba(255,255,255,.25); border-radius: 10px; padding: .65rem .8rem; color: #fff; }
+.pp-input:focus { outline: 2px solid var(--brand); }
+.pp-label { display: block; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--mut); margin-bottom: .3rem; }
+.pp-tmr { color: #ffd24a; font-weight: 900; font-variant-numeric: tabular-nums; }
+.pp-table th { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); font-weight: 800; padding: .5rem .4rem; text-align: center; }
+.pp-table td { padding: .55rem .4rem; text-align: center; border-top: 1px solid rgba(255,255,255,.08); font-weight: 800; }
+.pp-table td:nth-child(2), .pp-table th:nth-child(2) { text-align: left; }
+.pp-advance { background: color-mix(in srgb, var(--brand) 16%, transparent); box-shadow: inset 3px 0 0 var(--brand); }
